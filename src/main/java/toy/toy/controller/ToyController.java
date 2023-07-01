@@ -9,6 +9,6 @@ public class ToyController {
 
     @GetMapping
     public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("hello");
+        return ResponseEntity.ok("hello2");
     }
 }
