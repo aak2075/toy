@@ -1,1 +1,1 @@
-*.sh -text
+deploy.sh eol=lf
