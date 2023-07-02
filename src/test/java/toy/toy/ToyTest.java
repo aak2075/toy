@@ -10,4 +10,9 @@ public class ToyTest {
     void toy() {
         assertThat(1).isEqualTo(1);
     }
+
+    @Test
+    void failTest() {
+        assertThat(1).isEqualTo(0);
+    }
 }
