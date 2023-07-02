@@ -6,5 +6,5 @@ then
   kill "$(lsof -t -i :80)"
 fi
 
-java -jar build/libs/toy*
+nohup java -jar build/libs/toy* &
 
