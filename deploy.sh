@@ -12,4 +12,4 @@ else
 fi
 
 echo "run server"
-nohup java -jar -Dserver.port=9000 /home/ubuntu/jenkins/workspace/toy-pipeline/build/libs/toy* &
+nohup java -jar -Dserver.port=9000 build/libs/toy* &
