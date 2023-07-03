@@ -12,5 +12,5 @@ else
 fi
 
 echo "run server"
-BUILD_ID=dontKillMe nohup java -jar -Dserver.port=9000 build/libs/toy* > nohup.out 2>&1 &
+BUILD_ID=dontKillMe nohup java -jar -Dserver.port=9000 /home/ubuntu/jenkins/workspace/toy-pipeline/build/libstoy* > nohup.out 2>&1 &
 echo "run server"
