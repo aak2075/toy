@@ -7,4 +7,4 @@ then
   sleep 5
 fi
 
-nohup java -jar -Dserver.port=9000 build/libs/toy* > toy.out < /dev/null &
+nohup java -jar -Dserver.port=9000 build/libs/toy* > toy.out 2> toy.err < /dev/null &
