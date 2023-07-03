@@ -12,4 +12,5 @@ else
 fi
 
 echo "run server"
-nohup java -jar -Dserver.port=9000 build/libs/toy* > toy.out 2> toy.err < /dev/null &
+BUILD_ID=dontKillMe nohup java -jar -Dserver.port=9000 build/libs/toy* > nohup.out 2>&1 &
+echo "run server"
