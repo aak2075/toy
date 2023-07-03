@@ -6,5 +6,5 @@ then
   kill "$(lsof -t -i :9000)"
 fi
 
-nohup java -jar -Dserver.port=9000 build/libs/toy* &
+nohup java -jar -Dserver.port=9000 build/libs/toy* > toy.out&
 
