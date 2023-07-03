@@ -8,4 +8,4 @@ then
 fi
 
 echo "run server"
-nohup java -jar -Dserver.port=9000 build/libs/toy* > /dev/null 2>&1 &
+BUILD_ID=dontKillMe nohup java -jar -Dserver.port=9000 build/libs/toy* > toy.out 2> toy.err < /dev/null &
