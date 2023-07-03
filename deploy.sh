@@ -12,6 +12,4 @@ else
 fi
 
 echo "run server"
-export BUILD_ID=dontKillMe
 nohup java -jar -Dserver.port=9000 /home/ubuntu/jenkins/workspace/toy-pipeline/build/libs/toy* &
-echo "run server"
