@@ -4,7 +4,7 @@
 if lsof -i :9000 | grep "LISTEN"
 then
   kill "$(lsof -t -i :9000)"
+  sleep 5
 fi
 
-nohup java -jar -Dserver.port=9000 build/libs/toy* > toy.out&
-
+nohup java -jar -Dserver.port=9000 build/libs/toy* > toy.out < /dev/null &
