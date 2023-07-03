@@ -11,5 +11,10 @@ else
   kill "$pid"
 fi
 
+LOCATION="/home/ubuntu"
+JAR_PATH=$(find ../build/libs -name "*.jar")
+JAR_NAME=${JAR_PATH##*/}
+
 echo "run server"
-nohup java -jar -Dserver.port=9000 build/libs/toy* &
+
+nohup java -jar -Dserver.port=$port $LOCATION/$JAR_NAME &
