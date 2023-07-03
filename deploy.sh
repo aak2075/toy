@@ -12,7 +12,7 @@ else
 fi
 
 LOCATION="/home/ubuntu"
-JAR_PATH=$(find ../build/libs -name "*.jar")
+JAR_PATH=$(find ./build/libs -name "*.jar")
 JAR_NAME=${JAR_PATH##*/}
 
 echo "run server"
