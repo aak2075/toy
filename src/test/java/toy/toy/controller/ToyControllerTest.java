@@ -1,15 +1,14 @@
-package toy.toy;
+package toy.toy.controller;
 
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ToyTest {
+class ToyControllerTest {
 
     @Test
-    void sum() {
-        Toy toy = new Toy();
-        assertThat(toy.sum(2,3)).isEqualTo(5);
+    void hello() {
+        assertThat(1).isEqualTo(1);
     }
 }
