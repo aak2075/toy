@@ -11,6 +11,8 @@ else
   kill "$pid"
 fi
 
+JAR_PATH=$(find ./build/libs -name "*.jar")
+
 echo "run server"
-BUILD_ID=dontKillMe nohup java -jar -Dserver.port=9000 /home/ubuntu/jenkins/workspace/toy-pipeline/build/libs/toy* > nohup.out 2>&1 &
-echo "run server"
+
+nohup java -jar -Dserver.port=$port $JAR_PATH &
