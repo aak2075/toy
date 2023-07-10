@@ -10,13 +10,6 @@ on:
     # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
     types: [opened, assigned, synchronize, labeled]
 
-# job에 공통된 옵션을 준다dd
-defaults:
-  # build steps의 Run
-  run:
-    # ./backend 경로에서 실행
-    working-directory:
-
 # 실행 해야할 job
 jobs:
   # Job의 이름, 자유롭게 짓습니다.
@@ -52,7 +45,7 @@ jobs:
 
       - name: Sonaqube Analysis
         run: |
-          ./gradlew test sonarqube \
+          ./gradlew test sonarqube
           -Dsonar.host.url=${{ env.SONARQUBE_URL }}
           -Dsonar.projectKey=${{ env.SONARQUBE_ID }}
           # project의 제목을 {프로젝트명}-{pr번호} 형식으로 
