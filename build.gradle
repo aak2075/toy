@@ -52,20 +52,3 @@ jacocoTestReport {
     }
 
 }
-
-sonarqube {
-    properties {
-        property "sonar.host.url", "{서버 url}"
-        property "sonar.login", "{access token}"
-        property "sonar.projectKey", "{프로젝트 ID}"
-        property "sonar.projectName" , "{이번 빌드의 이름 이름}"
-        property "sonar.sources", "src"
-        property "sonar.language", "java"
-        property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.profile", "Sonar way"
-        property "sonar.java.binaries", "${buildDir}/classes"
-        property "sonar.test.inclusions", "**/*Test.java"
-        property "sonar.exclusions", "**/resources/static/**, **/Q*.class, **/test/**"
-        property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
-    }
-}
