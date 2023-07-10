@@ -49,7 +49,8 @@ jobs:
 
         # 위에서 설정했던 정적코드 전송 태스크 실행
       - name: Sonaqube Analysis
-        run: ./gradlew test sonarqube
+        run: |
+          ./gradlew test sonarqube
           -Dsonar.host.url=${{ env.SONARQUBE_URL }}
           -Dsonar.projectKey=${{ env.SONARQUBE_ID }}
           # project의 제목을 {프로젝트명}-{pr번호} 형식으로 
