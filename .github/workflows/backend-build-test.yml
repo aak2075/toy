@@ -32,7 +32,7 @@ jobs:
     env:
       # KEY - VALUE
       SONARQUBE_ID: admin
-      SONARQUBE_URL: ${{ vars.SONARQUBE_URL }}
+      SONARQUBE_URL: ${{ secrets.SONARQUBE_URL }}
       PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
       - name: Checkout source code
@@ -44,10 +44,10 @@ jobs:
         # 위에서 설정했던 정적코드 전송 태스크 실행
       - name: Sonaqube Analysis
         run: |
-          ./gradlew test sonar
-          -Dsonar.host.url=${{ env.SONARQUBE_URL }}
-          -Dsonar.projectKey=${{ env.SONARQUBE_ID }}
-          -Dsonar.projectName=${{ env.SONARQUBE_ID }}-${{ env.PR_NUMBER }}
+          ./gradlew test sonar \
+          -Dsonar.host.url=${{ env.SONARQUBE_URL }} \
+          -Dsonar.projectKey=${{ env.SONARQUBE_ID }} \
+          -Dsonar.projectName=${{ env.SONARQUBE_ID }}-${{ env.PR_NUMBER }} \
           -Dsonar.login=${{ secrets.SONARQUBE_ACCESS_TOKEN }}
 
       - name: Comment Sonarqube URL
