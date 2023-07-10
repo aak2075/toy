@@ -52,7 +52,7 @@ jobs:
 
       - name: Sonaqube Analysis
         run: |
-          ./gradlew test sonarqube \
+          ./gradlew test sonarqube
           -Dsonar.host.url=${{ env.SONARQUBE_URL }}
           -Dsonar.projectKey=${{ env.SONARQUBE_ID }}
           # project의 제목을 {프로젝트명}-{pr번호} 형식으로 
