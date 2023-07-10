@@ -5,10 +5,8 @@ name: backend-build-test
 on:
   pull_request:
     branches:
-    # 특정 브랜치만
       - main
-      - dev # develop 브랜치에서 pr 이벤트가 일어났을 때 실행
-    # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
+      - dev
     types: [opened]
 
 # 실행 해야할 job
@@ -41,6 +39,9 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
+
+      - name: test
+        run: echo ${{ env.SONARQUBE_URL }}
 
         # 위에서 설정했던 정적코드 전송 태스크 실행
       - name: Sonaqube Analysis
