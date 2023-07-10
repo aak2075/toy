@@ -1,0 +1,33 @@
+# workflow의 이름
+name: backend-build-test
+
+# PR 요청에 대해
+on:
+  pull_request:
+    # 특정 브랜치만
+    branches:
+      - develop # develop 브랜치에서 pr 이벤트가 일어났을 때 실행
+    # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
+    types: [opened, assigned, synchronize, labeled]
+
+# 실행 해야할 job
+jobs:
+  # Job의 이름, 자유롭게 짓습니다.
+  ###### 본문 내용과 관련 없는 Job, 빌드 테스트
+  build:
+    # label이 [backend] (id: 3141722951) 일때만 동작
+    # ubuntu 환경에서 실행 (환경은 github이 제공)
+    runs-on: ubuntu-latest
+    # 각 단계
+    steps:
+      # 소스코드 체크아웃
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        # 서브모듈 설정
+        with:
+          submodules: true
+          # secrets 변수는 github 세팅에서 미리 세팅한 데이터
+          token: ${{ secrets.SUBMODULE_ACCESS_TOKEN }}
+      # 빌드
+      - name: Build Test
+        run: ./gradlew bootJar
