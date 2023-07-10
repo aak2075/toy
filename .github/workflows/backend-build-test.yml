@@ -3,14 +3,13 @@ name: backend-build-test
 
 # PR 요청에 대해
 on:
-  push:
+  pull_request:
     branches:
-      - main
     # 특정 브랜치만
     #branches:
       - dev # develop 브랜치에서 pr 이벤트가 일어났을 때 실행
     # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
-    #types: [opened, assigned, synchronize, labeled]
+    types: [opened]
 
 # 실행 해야할 job
 jobs:
