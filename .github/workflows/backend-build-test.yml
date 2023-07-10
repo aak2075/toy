@@ -47,9 +47,6 @@ jobs:
       SONARQUBE_URL: ${{ secrets.SONARQUBE_URL }}
       PR_NUMBER: ${{ github.event.pull_request.number }}
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v3
-
       - name: Sonaqube Analysis
         run: ./gradlew test sonarqube
           -Dsonar.host.url=${{ env.SONARQUBE_URL }}
