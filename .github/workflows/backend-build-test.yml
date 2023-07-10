@@ -53,10 +53,10 @@ jobs:
       - name: Sonaqube Analysis
         run: |
           ./gradlew test sonarqube \
-          -Dsonar.host.url=${{ env.SONARQUBE_URL }} \
-          -Dsonar.projectKey=${{ env.SONARQUBE_ID }} \
-          # project의 제목을 {프로젝트명}-{pr번호} 형식으로  \
-          -Dsonar.projectName=${{ env.SONARQUBE_ID }}-${{ env.PR_NUMBER }} \
+          -Dsonar.host.url=${{ env.SONARQUBE_URL }}
+          -Dsonar.projectKey=${{ env.SONARQUBE_ID }}
+          # project의 제목을 {프로젝트명}-{pr번호} 형식으로 
+          -Dsonar.projectName=${{ env.SONARQUBE_ID }}-${{ env.PR_NUMBER }}
           -Dsonar.login=${{ secrets.SONARQUBE_ACCESS_TOKEN }}
 
       - name: Comment Sonarqube URL
