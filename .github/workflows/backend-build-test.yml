@@ -15,7 +15,7 @@ jobs:
   ###### 본문 내용과 관련 없는 Job, 빌드 테스트
   build:
     # label [BE] 일때만 동작
-    if: ${{ github.event.label.name == 'BE' }}
+    if: ${{ github.event.label.name }} == 'BE'
     # ubuntu 환경에서 실행 (환경은 github이 제공)
     runs-on: ubuntu-latest
     # 각 단계
@@ -29,7 +29,7 @@ jobs:
   ###### 아래부터 sonarqube와 관련있는 부분 시작
   analysis:
     # label [BE] 일때만 동작
-    if: ${{ github.event.label.name == 'BE' }}
+    if: ${{ github.event.label.name }} == 'BE'
     # ubuntu 환경에서 실행 (환경은 github이 제공)
     runs-on: ubuntu-latest
     # 이 Job에서 사용할 환경변수
