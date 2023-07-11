@@ -5,9 +5,7 @@ name: backend-build-test
 on:
   pull_request:
     branches:
-    # 특정 브랜치만
-    #branches:
-      - dev # develop 브랜치에서 pr 이벤트가 일어났을 때 실행
+      - main
     # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
     types: [opened]
 
@@ -16,7 +14,8 @@ jobs:
   # Job의 이름, 자유롭게 짓습니다.
   ###### 본문 내용과 관련 없는 Job, 빌드 테스트
   build:
-    # label이 [backend] (id: 3141722951) 일때만 동작
+    # label [BE] 일때만 동작
+    if: ${{ github.event.label.name == 'BE' }}
     # ubuntu 환경에서 실행 (환경은 github이 제공)
     runs-on: ubuntu-latest
     # 각 단계
@@ -29,7 +28,8 @@ jobs:
         run: ./gradlew bootJar
   ###### 아래부터 sonarqube와 관련있는 부분 시작
   analysis:
-    # label이 [backend] (id: 3141722951) 일때만 동작
+    # label [BE] 일때만 동작
+    if: ${{ github.event.label.name == 'BE' }}
     # ubuntu 환경에서 실행 (환경은 github이 제공)
     runs-on: ubuntu-latest
     # 이 Job에서 사용할 환경변수
@@ -45,11 +45,11 @@ jobs:
         # 위에서 설정했던 정적코드 전송 태스크 실행
       - name: Sonaqube Analysis
         run: |
-          ./gradlew test sonar
-          -Dsonar.host.url=${{ env.SONARQUBE_URL }}
-          -Dsonar.projectKey=${{ env.SONARQUBE_ID }}
-          -Dsonar.projectName=${{ env.SONARQUBE_ID }}-${{ env.PR_NUMBER }}
-          -Dsonar.login=${{ secrets.SONARQUBE_ACCESS_TOKEN }}
+          ./gradlew test sonar \
+          -Dsonar.host.url=${{ env.SONARQUBE_URL }} \
+          -Dsonar.projectKey=${{ env.SONARQUBE_ID }} \
+          -Dsonar.projectName=${{ env.SONARQUBE_ID }}-${{ env.PR_NUMBER }} \
+          -Dsonar.token=${{ secrets.SONARQUBE_ACCESS_TOKEN }}
 
       - name: Comment Sonarqube URL
         uses: actions/github-script@v4
