@@ -8,6 +8,7 @@ on:
       - main
     # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
     types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 # 실행 해야할 job
 jobs:
@@ -32,7 +33,7 @@ jobs:
         with:
          name: jar
          path: |
-           toy-0.0.1-SNAPSHOT.jar
+           build/libs/toy-0.0.1-SNAPSHOT.jar
 
   ###### 아래부터 sonarqube와 관련있는 부분 시작
   analysis:
