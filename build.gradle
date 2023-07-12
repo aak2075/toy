@@ -37,6 +37,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy 'jacocoTestReport'
 }
 
 jacoco {
@@ -50,5 +51,19 @@ jacocoTestReport {
         csv.required = false
         html.required = false
     }
+}
 
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            enabled = true
+            element = 'CLASS'
+
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.80
+            }
+        }
+    }
 }
