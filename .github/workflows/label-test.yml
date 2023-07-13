@@ -16,7 +16,7 @@ jobs:
   ###### 본문 내용과 관련 없는 Job, 빌드 테스트
   if-label-BE:
     # label [BE] 일때만 동작
-    if: ${{ github.event.labels.name }} == BE
+    if: contains(github.event.pull_request.labels.name, BE)
     # ubuntu 환경에서 실행 (환경은 github이 제공)
     runs-on: ubuntu-latest
     # 각 단계
@@ -30,7 +30,7 @@ jobs:
 
   always:
     runs-on: ubuntu-latest
-    if: ${{ github.event.labels.name }} == FE
+    if: contains(github.event.pull_request.labels.name, FE)
     # 각 단계
     steps:
       # 소스코드 체크아웃
