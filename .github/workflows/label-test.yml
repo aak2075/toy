@@ -32,6 +32,6 @@ jobs:
           echo "Pull Request Title: ${{ github.event.pull_request.title }}"
           echo "Pull Request Base Branch: ${{ github.event.pull_request.base.ref }}"
           echo "Pull Request Head Branch: ${{ github.event.pull_request.head.ref }}"
-          echo "Pull Request label name: ${{ github.event.pull_request.label.name }}"
-          echo "Pull Request label id: ${{ github.event.pull_request.label.id }}"
+          echo "Pull Request label name: ${{ github.event.pull_request.label.*.name }}"
+          echo "Pull Request label id: ${{ github.event.pull_request.labels.*.id }}"
           echo "Pull Request: ${{ github.event.pull_request }}"
