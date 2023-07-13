@@ -38,6 +38,6 @@ jobs:
           echo "Pull Request: ${{ github.event.pull_request }}"
 
       - name: Check labels
-        if: contains(github.event.pull_request.label.*.name, "BE")
+        if: contains(github.event.pull_request.label.*.name, BE)
         run: |
           echo "if true"
