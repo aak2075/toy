@@ -42,7 +42,7 @@ jobs:
 
   be-by-name:
     runs-on: ubuntu-latest
-    if: $ {{ github.event.pull_request.labels.*.name }} == BE
+    if: ${{ github.event.pull_request.labels.*.name }} == BE
     # 각 단계
     steps:
       # 소스코드 체크아웃
