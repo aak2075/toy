@@ -14,7 +14,7 @@ on:
 jobs:
   # Job의 이름, 자유롭게 짓습니다.
   ###### 본문 내용과 관련 없는 Job, 빌드 테스트
-  build:
+  if-label-BE:
     # label [BE] 일때만 동작
     if: ${{ github.event.labels.name }} == BE
     # ubuntu 환경에서 실행 (환경은 github이 제공)
@@ -31,3 +31,14 @@ jobs:
       - name: event path
         run: |
           cat $GITHUB_EVENT_PATH
+
+  always:
+    runs-on: ubuntu-latest
+    # 각 단계
+    steps:
+      # 소스코드 체크아웃
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      # 빌드
+      - name: label Test
+        run: echo "not labeled"
