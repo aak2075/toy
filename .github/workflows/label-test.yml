@@ -26,3 +26,9 @@ jobs:
       # 빌드
       - name: Build Test
         run: echo "labeled BE"
+
+      - name: Check labels
+        id: pr_labels
+        if: contains(${{ github.event.pull_request.labels.*.name }}, 'BE')
+        run: |
+          echo "Workflow triggered for specific labels"
