@@ -1,5 +1,5 @@
 # workflow의 이름
-name: backend-build-test
+name: label-test
 
 # PR 요청에 대해
 on:
