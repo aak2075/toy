@@ -8,6 +8,7 @@ on:
       - main
     # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
     types: [ opened, synchronize, reopened ]
+  workflow_dispatch:
 
 # 실행 해야할 job
 jobs:
@@ -32,4 +33,11 @@ jobs:
           echo "Pull Request Title: ${{ github.event.pull_request.title }}"
           echo "Pull Request Base Branch: ${{ github.event.pull_request.base.ref }}"
           echo "Pull Request Head Branch: ${{ github.event.pull_request.head.ref }}"
+          echo "Pull Request label name: ${{ github.event.pull_request.label.*.name }}"
+          echo "Pull Request label id: ${{ github.event.pull_request.labels.*.id }}"
           echo "Pull Request: ${{ github.event.pull_request }}"
+
+      - name: Check labels
+        if: contains(github.event.pull_request.label.*.name, "BE")
+        run: |
+          echo "if true"
