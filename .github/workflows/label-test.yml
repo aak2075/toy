@@ -28,7 +28,7 @@ jobs:
       - name: Build Test
         run: echo "labeled BE"
 
-  always:
+  fe-by-id:
     runs-on: ubuntu-latest
     if: contains(github.event.pull_request.labels.*.id, 123412351)
     # 각 단계
@@ -39,3 +39,15 @@ jobs:
       # 빌드
       - name: label Test
         run: echo "FE"
+
+  be-by-name:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, BE)
+    # 각 단계
+    steps:
+      # 소스코드 체크아웃
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      # 빌드
+      - name: label Test
+        run: echo "BE"
