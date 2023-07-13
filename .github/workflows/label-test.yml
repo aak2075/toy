@@ -30,8 +30,3 @@ jobs:
       - name: event path
         run: |
           cat $GITHUB_EVENT_PATH
-
-      - name: Check labels
-        if: contains(github.event.pull_request.label.*.name, BE)
-        run: |
-          echo "if true"
