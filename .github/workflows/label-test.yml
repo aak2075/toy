@@ -16,6 +16,7 @@ jobs:
   ###### 본문 내용과 관련 없는 Job, 빌드 테스트
   build:
     # label [BE] 일때만 동작
+    if: ${{ github.event.labels.name }} == BE
     # ubuntu 환경에서 실행 (환경은 github이 제공)
     runs-on: ubuntu-latest
     # 각 단계
