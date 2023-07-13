@@ -3,11 +3,11 @@ name: backend-deploy-test
 
 # PR 요청에 대해
 on:
-  pull_request:
-    branches:
-      - main
-    # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
-    types: [closed]
+#  pull_request:
+#    branches:
+#      - main
+#    # pr이 생성 되었을 때, 담당 유저가 등록되었을 때, PR에 코드가 머지되었을 때, 라벨이 달렸을 때 동작
+#    types: [closed]
   workflow_dispatch:
 
 # 실행 해야할 job
